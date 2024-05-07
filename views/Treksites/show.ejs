@@ -10,6 +10,13 @@
     <h3><%=treksite.title%></h3>
     <p><%=treksite.location%></p>
     <p><%=treksite.price%></p>
+    <p>
+        <form action="/treksites/<%=treksite._id%>?_method=DELETE" method="POST">
+            <button>Delete</button>
+        </form>
+    </p>
+    <a href="/treksites/<%=treksite._id%>/edit" >Edit it</a>
+    <br>
     <a href="/treksites">Back</a>
 </body>
 </html>

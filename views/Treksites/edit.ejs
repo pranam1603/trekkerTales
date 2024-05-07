@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Trek</h1>
+    <form action="/treksites/<%=treksite._id%>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" value="<%=treksite.title%>">
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" value="<%=treksite.location%>">
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" value="<%=treksite.price%>">
+        <button type="submit" >Edit </button>
+    </form>
+    <a href="/treksites">Back</a>
+</body>
+</html>
