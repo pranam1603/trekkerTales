@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Show TrekSites</h1>
-    <a href="/treksites/new">New Trek</a>
+<% layout('layouts/boilerplate')%>
+    <h1>All TrekSites</h1>
     <ul>
         <% for(let treksite of alltreks) {%>
-            <li><a href="/treksites/<%=treksite._id%>"><%= treksite.title%></a></li>
+            <div class="card" mb-3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<%= treksite .image %>" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= treksite.title %></h5>
+                            <p class="card-text"><%= treksite.description %></p>
+                            <p class="card-text">
+                                <small class="text-muted"><%=treksite.location%></small>
+                            </p>
+                            <a href="/treksites/<%=treksite._id%>" class="btn btn-primary">Explore!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <%}%>
     </ul> 
-    </body>
-</html>

@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Show Trek Site</h1>
-    <h3><%=treksite.title%></h3>
-    <p><%=treksite.location%></p>
-    <p><%=treksite.price%></p>
-    <p>
-        <form action="/treksites/<%=treksite._id%>?_method=DELETE" method="POST">
-            <button>Delete</button>
-        </form>
-    </p>
-    <a href="/treksites/<%=treksite._id%>/edit" >Edit it</a>
-    <br>
-    <a href="/treksites">Back</a>
-</body>
-</html>
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card" mb-3>
+            <img src="<%=treksite.image%>" class="card-img-top" alt="trek image">
+            <div class="card-body">
+                <h5 class="card-title"><%=treksite.title%></h5>
+                <p class="card-text"><%=treksite.description%></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted"><%=treksite.location%></li>
+                <li class="list-group-item">$<%=treksite.price%>/night</li>
+            </ul>
+            <div class="card-body">
+                <a class="btn btn-info" href="/treksites/<%=treksite._id%>/edit">Edit it</a>
+                <form class="d-inline" action="/treksites/<%=treksite._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

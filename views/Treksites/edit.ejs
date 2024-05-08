@@ -1,21 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Edit Trek</h1>
-    <form action="/treksites/<%=treksite._id%>?_method=PUT" method="POST">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" value="<%=treksite.title%>">
-        <label for="location">Location:</label>
-        <input type="text" name="location" id="location" value="<%=treksite.location%>">
-        <label for="price">Price:</label>
-        <input type="number" name="price" id="price" value="<%=treksite.price%>">
-        <button type="submit" >Edit </button>
-    </form>
-    <a href="/treksites">Back</a>
-</body>
-</html>
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">New TrekSite</h1>
+    <div class="col-6 offset-3">
+        <form action="/treksites/<%=treksite._id%>?_method=PUT" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title:</label>
+                <input class="form-control" type="text" placeholder="Title" value="<%=treksite.title%>"" name="title" id="title">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location:</label>
+                <input class="form-control" type="text" placeholder="Location" value="<%=treksite.location%>" name="location" id="location">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Price:</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="number" id="price" name="price" value="<%=treksite.price%>" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image Url:</label>
+                <input class="form-control" type="text" value="<%=treksite.image%>" placeholder="Image Url" name="image" id="image">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description:</label>
+                <textarea class="form-control" type="number" placeholder="Description" name="description" id="description"><%=treksite.description%></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-warning" type="submit">Edit Location</button>
+                <a class="btn btn-secondary mx-1" href="/treksites">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

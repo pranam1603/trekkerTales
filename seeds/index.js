@@ -20,10 +20,14 @@ const seedDB = async () => {
         const trek = new Treksite({
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            price: Math.floor(Math.random() * 100)
+            price: Math.floor(Math.random() * 100),
+            image: "https://source.unsplash.com/random/?Cryptocurrency&1",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
         })
         await trek.save();
     }
 }
 
-seedDB();
+seedDB().then(() => {
+    mongoose.connection.close();
+})
