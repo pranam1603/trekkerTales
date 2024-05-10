@@ -17,16 +17,20 @@ db.once("open", () => {
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
     res.render('show');
 })
 
-app.get('/treksites', async(req, res) => {
+app.get('/treksites', async (req, res) => {
     const alltreks = await Treksite.find({});
-    res.render('Treksites/index', { alltreks });
+    res.render('Treksites/index', {
+        alltreks
+    });
 })
 
 app.get('/treksites/new', async (req, res) => {
@@ -39,24 +43,42 @@ app.post('/treksites', async (req, res) => {
     res.redirect(`/treksites/${treksite._id}`)
 })
 
-app.get('/treksites/:id', async(req, res) => {
-    const treksite = await Treksite.findById(req.params.id);
-    res.render('Treksites/show', { treksite });
+app.get('/treksites/:id', async (req, res, next) => {
+    try {
+        const treksite = await Treksite.findById(req.params.id);
+        res.render('Treksites/show', {
+            treksite
+        });
+    } catch (e) {
+        next(e);
+    }  
 })
 
-app.get('/treksites/:id/edit', async(req, res) => {
+app.get('/treksites/:id/edit', async (req, res) => {
     const treksite = await Treksite.findById(req.params.id);
-    res.render('Treksites/edit', { treksite });
+    res.render('Treksites/edit', {
+        treksite
+    });
 })
 
-app.put('/treksites/:id', async(req, res) => {
-    const treksite = await Treksite.findByIdAndUpdate(req.params.id, {image: req.body.image, description: req.body.description, title: req.body.title, location: req.body.location, price: req.body.price})
+app.put('/treksites/:id', async (req, res) => {
+    const treksite = await Treksite.findByIdAndUpdate(req.params.id, {
+        image: req.body.image,
+        description: req.body.description,
+        title: req.body.title,
+        location: req.body.location,
+        price: req.body.price
+    })
     res.redirect(`/treksites/${treksite.id}`);
 })
 
 app.delete('/treksites/:id', async (req, res) => {
     await Treksite.findByIdAndDelete(req.params.id);
     res.redirect("/treksites");
+})
+
+app.use((err, req, res, next) => {
+    res.send('Something Went Wrong')
 })
 
 app.listen(3000, () => {

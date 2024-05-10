@@ -2,29 +2,59 @@
 <div class="row">
     <h1 class="text-center">New TrekSite</h1>
     <div class="col-6 offset-3">
-        <form action="/treksites/<%=treksite._id%>?_method=PUT" method="POST">
+        <form action="/treksites/<%=treksite._id%>?_method=PUT" method="POST" novalidate class="validate-form">
             <div class="mb-3">
                 <label class="form-label" for="title">Title:</label>
-                <input class="form-control" type="text" placeholder="Title" value="<%=treksite.title%>"" name="title" id="title">
+                <input class="form-control" type="text" placeholder="Title" value="<%=treksite.title%>"" name="title" id="title" required>
+                <div class="invalid-feedback">
+                    Enter a valid value!
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location:</label>
-                <input class="form-control" type="text" placeholder="Location" value="<%=treksite.location%>" name="location" id="location">
+                <input class="form-control" type="text" placeholder="Location" value="<%=treksite.location%>" name="location" id="location" required>
+                <div class="invalid-feedback">
+                    Enter a valid value!
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="price">Price:</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="number" id="price" name="price" value="<%=treksite.price%>" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest dollar)">
+                    <input type="number" id="price" name="price" value="<%=treksite.price%>" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest dollar)" required>
+                    <div class="invalid-feedback">
+                        Enter a valid value!
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="image">Image Url:</label>
-                <input class="form-control" type="text" value="<%=treksite.image%>" placeholder="Image Url" name="image" id="image">
+                <input class="form-control" type="text" value="<%=treksite.image%>" placeholder="Image Url" name="image" id="image" required>
+                <div class="invalid-feedback">
+                    Enter a valid value!
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description:</label>
-                <textarea class="form-control" type="number" placeholder="Description" name="description" id="description"><%=treksite.description%></textarea>
+                <textarea class="form-control" type="number" placeholder="Description" name="description" id="description" required><%=treksite.description%></textarea>
+                <div class="invalid-feedback">
+                    Enter a valid value!
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
             <div class="mb-3">
                 <button class="btn btn-warning" type="submit">Edit Location</button>
