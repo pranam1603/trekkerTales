@@ -6,7 +6,6 @@ const treksiteSchema = new Schema({
     description: String,
     location: String,
     price: Number,
-    description: String,
     image: String
 })
 
