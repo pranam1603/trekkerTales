@@ -1,6 +1,7 @@
 const express = require('express');
 const ExpressError = require('../utils/expressError.js');
 const catchAsync = require('../utils/asyncError.js');
+const { isLogin } = require('../middleware');
 
 const { joiTreksitesSchema } = require('../schema');
 const Treksite = require('../models/Treksite');
@@ -21,7 +22,7 @@ Router.get('/', catchAsync(async (req, res) => {
     res.render('Treksites/index', {alltreks});
 }))
 
-Router.get('/new', catchAsync(async (req, res) => {
+Router.get('/new', isLogin, catchAsync(async (req, res) => {
     res.render('Treksites/new')
 }))
 
